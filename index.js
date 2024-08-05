@@ -2,29 +2,62 @@ let infoButton = document.getElementById("infoButton");
 let popup = document.getElementById("popupContainer");
 let closeButton = document.getElementById("closeButton");
 let quiz = document.getElementById("quiz");
-const answer1 = document.getElementById("answer1");
-const answer2 = document.getElementById("answer2");
-const answer3 = document.getElementById("answer3");
-const answer4 = document.getElementById("answer4");
+let nextButton = document.getElementById("nextButton");
 
-const answers = [answer1, answer2, answer3, answer4];
-const correctAnswer = answer4;
+const questions = [
+  {
+    image: "img/marshal.png",
+    question: "What is the name of this weapon?",
+    answers: ["Phantom", "Sheriff", "Classic", "Marshall"],
+    correctAnswer: "Marshall"
+  },
+  {
+    image: "img/phantom.png",
+    question: "What is the name of this weapon?",
+    answers: ["Vandal", "Guardian", "Phantom", "Operator"],
+    correctAnswer: "Phantom"
+  },
+];
+
+let currentQuestionIndex = -1;
+
+function displayRandomQuestion() {
+  const quizContainer = document.getElementById('quiz');
+  const randomIndex = Math.floor(Math.random() * questions.length);
+  currentQuestionIndex = randomIndex;
+  
+  const questionData = questions[randomIndex];
+  
+  quizContainer.innerHTML = `
+    <img src="${questionData.image}">
+    <h1>${questionData.question}</h1>
+    <div class="answers-container">
+      ${questionData.answers.map((answer, index) => `
+        <button class="quiz-answers" id="answer${index + 1}" onclick="checkAnswer(event, '${answer}')">${answer}</button>
+      `).join('')}
+    </div>
+    <div id="feedback"></div>
+    <button type="submit" id="nextButton" onclick="displayRandomQuestion()">Next</button>
+  `;
+}
 
 
-function checkAnswer(event) {
-  let selectedButton = event.target;
+displayRandomQuestion();
 
-    if(selectedButton === correctAnswer) {
-      selectedButton.style.backgroundColor = "green";
-      answers.forEach(button => {
-        button.disabled = true;
-      });
-    }
-    else {
-      selectedButton.style.backgroundColor = "red";
-    }
+function checkAnswer(event, selectedAnswer) {
+  const questionData = questions[currentQuestionIndex];
+  const selectedButton = event.target;
+  const nextButton = document.getElementById('nextButton');
+  
+  if (selectedAnswer === questionData.correctAnswer) {
+    selectedButton.style.backgroundColor = "green";
+    nextButton.disabled = false;
   }
-
+  else {
+    selectedButton.style.backgroundColor = "red";
+    nextButton.disabled = true;
+  }
+}
 
 function openPopup() {
   popup.classList.add("open-popup");
@@ -35,4 +68,3 @@ function closePopup() {
   popup.classList.remove("open-popup");
   window.location = "/";
 }
-
