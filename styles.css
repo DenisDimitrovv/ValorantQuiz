@@ -1,0 +1,130 @@
+* {
+  font-family: "Plathorn W01 Ext Regular", sans-serif;
+}
+body {
+  background-image: url(img/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.logo {
+  width: 80px;
+  height: 70px;
+  margin-right: auto;
+  cursor: pointer;
+}
+.container {
+  list-style: none;
+  display: flex;
+  background-color: rgb(101, 101, 172);
+  border-radius: 15px;
+}
+.items {
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+}
+.items a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  display: block;
+  padding: 0.96em;
+  font-size: 15px;
+  font-family: "Plathorn W01 Ext Regular", sans-serif;
+  margin-right: 30px;
+}
+a:hover {
+  border: 2px solid rgba(170, 170, 231, 0.726);
+  border-radius: 15px;
+  background-color: rgba(156, 156, 228, 0.726);
+  color: black;
+}
+.popupcontainer {
+  width: 700px;
+  height: 400px;
+  background: #fff;
+  border-radius: 6px;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+  visibility: hidden;
+  z-index: 2;
+}
+.open-popup{
+  visibility: visible;
+}
+
+.popupcontainer img {
+  width: 100px;
+  margin-top: -50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: hwb(0 29% 71% / 0.555);
+}
+.popupcontainer h1 {
+  font-size: 38px;
+  font-weight: bold;
+  margin: 30px 0 10px;
+}
+.popupcontainer button {
+  width: 100%;
+  margin-top: 50px;
+  padding: 10px 0;
+  background-color: #6fd649;
+  color: #fff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+.quiz-container {
+  width: 700px;
+  height: 430px;
+  background: rgb(255, 255, 255);
+  border-radius: 6px;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+  visibility: visible;
+}
+.quiz-container img {
+  width: 350px;
+  height: 150px;
+}
+.quiz-closed {
+  visibility: hidden;
+}
+.answers-container {
+  list-style: none;
+  border-radius: 15px;
+}
+
+.quiz-answers {
+  width: 40%;
+  margin: 20px;
+  padding: 10px 0;
+  background-color: rgb(138, 138, 224);
+  color: #fff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+.quiz-answers:hover {
+  background-color: rgb(119, 119, 224);
+}
+.logoName {
+  position: absolute;
+  margin-left: 100px;
+  color: white;
+}

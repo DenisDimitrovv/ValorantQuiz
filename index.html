@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My website</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @import url(https://db.onlinewebfonts.com/c/6000cec821d5fd8d9c54c0b8780d3030?family=Plathorn+W01+Ext+Regular);
+  </style>
+</head>
+<body>
+
+  <ul class="container">
+    <img src="img/logo.webp" class="logo" alt="logo" onclick="goToHomePage()">
+    <h2 class="logoName">Valorant Q</h2>
+    <li id="playButton" class="items"><a href="/">Play</a></li>
+      <li id="infoButton" class="items" onclick="openPopup()"><a>Info</a></li>
+  </ul>
+  
+
+  <div class="popupcontainer" id="popupContainer">
+    <img src="img/d3.png" id="pupuplogo" alt="popuplogo">
+    <h1>About VLQ</h1>
+    <p>Play a different quiz every day<br>
+      Guess abilities, maps, audio clues and a daily word in a classic game of Wordle</p><br><br>
+      <p id="sponsor">Riot Games does not endorse or sponsor this project.</p>
+      <button id="closeButton" type="button" onclick="closePopup()">Close</button>
+  </div>
+
+  <div class="quiz-container" id="quiz">
+    <img src="img/marshal.png">
+    <h1>Which weapon is that?</h1>
+    
+      <div class="answers-container">
+          <button class="quiz-answers" id="answer1" onclick="checkAnswer(event)">Phantom</button>
+          <button class="quiz-answers" id="answer2" onclick="checkAnswer(event)">Sheriff</button><br>
+          <button class="quiz-answers" id="answer3" onclick="checkAnswer(event)">Classic</button>
+          <button class="quiz-answers" id="answer4" onclick="checkAnswer(event)">Marshall</button><br>
+      </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
