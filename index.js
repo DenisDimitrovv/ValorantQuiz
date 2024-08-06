@@ -3,6 +3,8 @@ let popup = document.getElementById("popupContainer");
 let closeButton = document.getElementById("closeButton");
 let quiz = document.getElementById("quiz");
 let nextButton = document.getElementById("nextButton");
+let wrongAnswer = document.getElementById("wrong-answer");
+
 
 const questions = [
   {
@@ -17,38 +19,57 @@ const questions = [
     answers: ["Vandal", "Guardian", "Phantom", "Operator"],
     correctAnswer: "Phantom"
   },
+  {
+    image: "img/sheriff.png",
+    question: "What is the name of this spell?",
+    answers: ["Sheriff", "Operator", "Ghost", "Bucky"],
+    correctAnswer: "Sheriff"
+  }
 ];
 
 let currentQuestionIndex = -1;
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 
 function displayRandomQuestion() {
   const quizContainer = document.getElementById('quiz');
   const randomIndex = Math.floor(Math.random() * questions.length);
   currentQuestionIndex = randomIndex;
-  
+
+
   const questionData = questions[randomIndex];
   
+  const shuffledAnswers = shuffleArray([...questionData.answers]);
+
   quizContainer.innerHTML = `
-    <img src="${questionData.image}">
+    <img id="questionImage" src="${questionData.image}">
     <h1>${questionData.question}</h1>
     <div class="answers-container">
-      ${questionData.answers.map((answer, index) => `
+      ${shuffledAnswers.map((answer, index) => `
         <button class="quiz-answers" id="answer${index + 1}" onclick="checkAnswer(event, '${answer}')">${answer}</button>
       `).join('')}
     </div>
-    <div id="feedback"></div>
-    <button type="submit" id="nextButton" onclick="displayRandomQuestion()">Next</button>
+    <p id="wrongAnswer"></p>
+    <button type="submit" id="nextButton" disabled onclick="displayRandomQuestion()">Next</button>
   `;
 }
 
 
-displayRandomQuestion();
+displayRandomQuestion();  
 
 function checkAnswer(event, selectedAnswer) {
   const questionData = questions[currentQuestionIndex];
   const selectedButton = event.target;
   const nextButton = document.getElementById('nextButton');
-  
+
+
   if (selectedAnswer === questionData.correctAnswer) {
     selectedButton.style.backgroundColor = "green";
     nextButton.disabled = false;
