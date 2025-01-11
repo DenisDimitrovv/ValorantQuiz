@@ -18,9 +18,12 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}  # Your private SSH key stored in GitHub secrets
 
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass  # Install sshpass to provide the password
+
       - name: Deploy to VM
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
+          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
             cd /home/denis  # Replace with the directory where your app is located on the VM
             git pull origin main  # Pull the latest code from GitHub
             docker build -t website .  # Build the Docker image (replace 'website' with your image name)
