@@ -13,17 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4  # Checkout the repository code
 
-      - name: Setup SSH Key
+      - name: Test SSH Connection
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ls -la ~/.ssh 
-          ssh-keyscan 192.168.199.128 >> ~/.ssh/known_hosts
-          cat ~/.ssh/known_hosts
-        shell: bash
-      
+          ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no denis@192.168.199.128 "echo 'SSH connection successful!'"
 
-      - name: Deploy via SSH
-        run: |
-          ssh -i ~/.ssh/id_rsa denis@192.168.199.128 "echo 'Connection Successful!'"
