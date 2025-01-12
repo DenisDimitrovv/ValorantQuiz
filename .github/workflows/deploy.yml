@@ -13,19 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4  # Checkout the repository code
 
-      - name: Install sshpass
-        run: sudo apt-get update && sudo apt-get install -y sshpass  # Install sshpass to provide the password
-
-      - name: Deploy to VM
+      - name: Setup SSH Key
         run: |
-          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
-            cd /home/denis  # Replace with the directory where your app is located on the VM
-            git pull origin main  # Pull the latest code from GitHub
-            docker build -t website .  # Build the Docker image (replace 'website' with your image name)
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan 192.168.199.128 >> ~/.ssh/known_hosts
 
-            # Stop and remove the existing container (if it exists)
-            docker ps -q -f name=website && docker stop website && docker rm website
-            
-            # Run the new container in detached mode
-            docker run -d -p 8080:80 --name website website  # Give it a fixed name if you prefer
-          EOF
+      - name: Deploy via SSH
+        run: |
+          ssh -i ~/.ssh/id_rsa denis@192.168.199.128 "echo 'Connection Successful!'"
