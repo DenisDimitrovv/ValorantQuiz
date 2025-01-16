@@ -1,19 +1,1 @@
-name: Deploy to Rocky Linux VM
-
-on:
-  push:
-    branches:
-      - main  # Adjust this to your default branch if necessary
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest  # Uses GitHub's Ubuntu runner
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4  # Checkout the repository code
-
-      - name: Test SSH Connection
-        run: |
-          ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no denis@192.168.199.128 "echo 'SSH connection successful!'"
 
