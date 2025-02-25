@@ -132,7 +132,7 @@ a:hover {
   width: 20%;
   margin-top: 50px;
   padding: 10px 0;
-  background-color: #6fd649;
+  background-color: #9c9c9c; /* Default grey */
   color: #fff;
   border: 0;
   outline: none;
@@ -140,9 +140,16 @@ a:hover {
   border-radius: 4px;
   cursor: pointer;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.1s ease;
 }
-#nextButton:hover{
-  background-color: #49d815;
+#nextButton:hover {
+  background-color: grey;
+}
+#nextButton.correct-answer {
+  background-color: rgb(50,205,50);
+}
+#nextButton.correct-answer:hover {
+  background-color: #02ec0e;
 }
 #nextButton-wrong {
   background-color: rgb(192, 7, 7);

@@ -21,7 +21,7 @@ const questions = [
   },
   {
     image: "img/sheriff.png",
-    question: "What is the name of this spell?",
+    question: "What is the name of this weapon?",
     answers: ["Sheriff", "Operator", "Ghost", "Bucky"],
     correctAnswer: "Sheriff"
   }
@@ -71,11 +71,15 @@ function checkAnswer(event, selectedAnswer) {
 
 
   if (selectedAnswer === questionData.correctAnswer) {
-    selectedButton.style.backgroundColor = "green";
+    selectedButton.style.backgroundColor = "rgb(50,205,50)";
+    nextButton.classList.add("correct-answer");
+    nextButton.classList.add("hover-enabled");
     nextButton.disabled = false;
   }
   else {
     selectedButton.style.backgroundColor = "red";
+    nextButton.classList.remove("correct-answer");
+    nextButton.classList.remove("hover-enabled");
     nextButton.disabled = true;
   }
 }
