@@ -14,6 +14,12 @@ const questions = [
     correctAnswer: "Marshall"
   },
   {
+    image: "img/icebox.png",
+    question: "On which map is this place?",
+    answers: ["Sunset", "Lotus", "Icebox", "Pearl"],
+    correctAnswer: "Icebox"
+  },
+  {
     image: "img/phantom.png",
     question: "What is the name of this weapon?",
     answers: ["Vandal", "Guardian", "Phantom", "Operator"],
