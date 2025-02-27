@@ -43,15 +43,27 @@ function shuffleArray(array) {
   return array;
 }
 
+let recentQuestions = [];
 
 function displayRandomQuestion() {
   const quizContainer = document.getElementById('quiz');
-  const randomIndex = Math.floor(Math.random() * questions.length);
+
+  let availableQuestions = questions.filter((_, index) => !recentQuestions.includes(index));
+
+  if (availableQuestions.length === 0) {
+    recentQuestions = [];
+    availableQuestions = [...questions];
+  }
+
+  const randomIndex = questions.indexOf(availableQuestions[Math.floor(Math.random() * availableQuestions.length)]);
   currentQuestionIndex = randomIndex;
 
+  recentQuestions.push(randomIndex);
+  if (recentQuestions.length > 3) {
+    recentQuestions.shift();
+  }
 
   const questionData = questions[randomIndex];
-  
   const shuffledAnswers = shuffleArray([...questionData.answers]);
 
   quizContainer.innerHTML = `
@@ -66,6 +78,7 @@ function displayRandomQuestion() {
     <button type="submit" id="nextButton" disabled onclick="displayRandomQuestion()">Next</button>
   `;
 }
+
 
 
 displayRandomQuestion();  
