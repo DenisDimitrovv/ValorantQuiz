@@ -8,28 +8,46 @@ let wrongAnswer = document.getElementById("wrong-answer");
 
 const questions = [
   {
-    image: "img/marshal.png",
+    image: "img/weapon1.png",
     question: "What is the name of this weapon?",
     answers: ["Phantom", "Sheriff", "Classic", "Marshall"],
     correctAnswer: "Marshall"
   },
   {
-    image: "img/icebox.png",
+    image: "img/map1.png",
     question: "On which map is this place?",
     answers: ["Sunset", "Lotus", "Icebox", "Pearl"],
     correctAnswer: "Icebox"
   },
   {
-    image: "img/phantom.png",
+    image: "img/weapon2.png",
     question: "What is the name of this weapon?",
     answers: ["Vandal", "Guardian", "Phantom", "Operator"],
     correctAnswer: "Phantom"
   },
   {
-    image: "img/sheriff.png",
+    image: "img/weapon3.png",
     question: "What is the name of this weapon?",
     answers: ["Sheriff", "Operator", "Ghost", "Bucky"],
     correctAnswer: "Sheriff"
+  },
+  {
+    image: "img/agent1.png",
+    question: "Who is this agent?",
+    answers: ["Raze", "Reyna", "Killjoy", "Jet"],
+    correctAnswer: "Raze"
+  },
+  {
+    image: "img/knife1.png",
+    question: "What is the name of this knife skin?",
+    answers: ["Xenohunter", "Evori’s Spellcaster", "Kaimana", "Eternal Sovereign"],
+    correctAnswer: "Xenohunter"
+  },
+  {
+    image: "img/country1.png",
+    question: "From which country Astra is?",
+    answers: ["Ghana", "India", "United Kingdom", "United States"],
+    correctAnswer: "Ghana"
   }
 ];
 
